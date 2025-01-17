@@ -1,11 +1,10 @@
 <!--
 Name: Cheyenne Norsworthy
-Filename: index.html
+Filename: create.js
 Course: INFT 2202
 Date: January 10, 2025
-Description: This is my general hmtl index page. This the main source of information for webpages. Web page 
-template was provided by bootsrap.
--->
+Description: This is my general js create page.
+--> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +44,44 @@ template was provided by bootsrap.
                 <p class="text-white-50 mb-0">Landing Page Template</p>
             </div>
         </header>
-        <!-- Image element - set the background image for the header in the line below-->
-        <div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/4ulffa6qoKA/1200x800')">
-            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
-            <div style="height: 20rem"></div>
-        </div>
+        <main class="flex-shrink-0">
+            <div class="container">
+              <h1>Add Animal</h1>
+              <hr>
+              <form id="animal-form" method="POST">
+                <div class="mb-2">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Animal Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                    <p class="text-danger d-none">currently hidden</p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="breed" class="form-label">Animal Breed</label>
+                    <input type="text" class="form-control" id="breed" name="breed">
+                    <p class="text-danger d-none"></p>
+                  </div>              
+                  <div class="mb-3">
+                    <label for="legs" class="form-label">Number of Legs</label>
+                    <input type="text" class="form-control" id="legs" name="legs">
+                    <p class="text-danger d-none"></p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="eyes" class="form-label">Number of Eyes</label>
+                    <input type="text" class="form-control" id="eyes" name="eyes">
+                    <p class="text-danger d-none"></p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="sound" class="form-label">Sound this animal makes</label>
+                    <input type="text" class="form-control" id="sound" name="sound">
+                    <p class="text-danger d-none"></p>
+                  </div>  
+                  <div>
+                    <button type="submit" class="btn btn-primary">Save Animal</button>
+                  </div>
+                </div>
+              </form>  
+            </div>
+          </main>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Cheyenne 2023</p></div>
