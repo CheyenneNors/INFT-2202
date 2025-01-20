@@ -6,6 +6,8 @@ Date: January 17, 2025
 Description: This is my js list code.
 */
 
+console.log('we are on the list page');
+
 const eleEmpty = document.getElementById('empty-message');
 const eleTable = document.getElementById('animal-list');
 
