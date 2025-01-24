@@ -6,7 +6,6 @@ Date: January 10, 2025
 Description: This is my general js create page.
 */
 
-// tell us what page we're on
 console.log('we are on the add page');
 
 // assign a handler to the submit event
@@ -71,42 +70,7 @@ function validateAnimalForm ( form ) {
         eleNameError.classList.add('d-none');
     }
     // add validation for the remaining fields. 
-    const breed = form.breed.value;
-    const elebreedError = form.breed.nextElementSibling
-    if (breed == "") {
-        elebreedError.classList.remove('d-none');
-        elebreedError.textContent = "You must enter the breed of this animal!";
-        valid = false;
-    } else {
-        elebreedError.classList.add('d-none');
-    }
-    const legs = form.legs.value;
-    const elelegsError = form.legs.nextElementSibling
-    if (legs == "") {
-        elelegsError.classList.remove('d-none');
-        elelegsError.textContent = "You must enter the breed of this animal!";
-        valid = false;
-    } else {
-        eleblegsError.classList.add('d-none');
-    }
-    const eyes = form.eyes.value;
-    const eleeyesError = form.eyes.nextElementSibling
-    if (eyes == "") {
-        eleeyesError.classList.remove('d-none');
-        eleeyesError.textContent = "You must enter the breed of this animal!";
-        valid = false;
-    } else {
-        eleeyesError.classList.add('d-none');
-    }
-    const sound = form.sound.value;
-    const elesoundError = form.sound.nextElementSibling
-    if (sound == "") {
-        elesoundError.classList.remove('d-none');
-        elesoundError.textContent = "You must enter the breed of this animal!";
-        valid = false;
-    } else {
-        elesoundError.classList.add('d-none');
-    }
+
     // return if the form is valid or not
     return valid
 }
