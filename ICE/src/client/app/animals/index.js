@@ -16,39 +16,44 @@ function animal() {
         //create animal form content
         const mb3Name = document.createElement('div');
         mb3Name.classList.add('mb-3');
-        mb3Name.innerHTML = '<label for="name" class="form-label">Animal Name</label>'
-            '<input type="text" class="form-control" id="name" name="name">'
-            '<p class="text-danger d-none">currently hidden</p>'
-        container.append(mb3Name); 
+        mb3Name.innerHTML = '<label for="name" class="form-label">Animal Name</label>' +
+            '<input type="text" class="form-control" id="name" name="name">' +
+            '<p class="text-danger d-none"></p>';
+        container.append(mb3Name);
+
         const mb3Breed = document.createElement('div');
         mb3Breed.classList.add('mb-3');
-        mb3Breed.innerHTML= '<label for="breed" class="form-label">Animal Breed</label>'
-            '<input type="text" class="form-control" id="breed" name="breed">'
-            '<p class="text-danger d-none"></p>'
+        mb3Breed.innerHTML = '<label for="breed" class="form-label">Animal Breed</label>' +
+            '<input type="text" class="form-control" id="breed" name="breed">' +
+            '<p class="text-danger d-none"></p>';
         container.append(mb3Breed);
+        
         const mb3Leg = document.createElement('div');
         mb3Leg.classList.add('mb-3');
-        mb3Leg.innerHTML = '<label for="legs" class="form-label">Number of Legs</label>'
-            '<input type="text" class="form-control" id="legs" name="legs">'
-            '<p class="text-danger d-none"></p>'
+        mb3Leg.innerHTML = '<label for="legs" class="form-label">Number of Legs</label>' +
+            '<input type="text" class="form-control" id="legs" name="legs">' +
+            '<p class="text-danger d-none"></p>';
         container.append(mb3Leg);
-        const mb3Eyes = document.createElement('div');
-        mb3Eyes.classList.add('mb-3');
-        mb3Eyes.innerHTML = '<label for="eyes" class="form-label">Number of Eyes</label>'
-            '<input type="text" class="form-control" id="eyes" name="eyes">'
-            '<p class="text-danger d-none"></p>'
-        container.append(mb3Eyes);
+        
+        const mb3Eye = document.createElement('div');
+        mb3Eye.classList.add('mb-3');
+        mb3Eye.innerHTML = '<label for="eyes" class="form-label">Number of Eyes</label>' +
+            '<input type="text" class="form-control" id="eyes" name="eyes">' +
+            '<p class="text-danger d-none"></p>';
+        container.append(mb3Eye);
+        
         const mb3Sound = document.createElement('div');
         mb3Sound.classList.add('mb-3');
-        mb3Sound.innerHTML = '<label for="sound" class="form-label">Sound this animal makes</label>'
-            '<input type="text" class="form-control" id="sound" name="sound">'
-            '<p class="text-danger d-none"></p>'
-        container.append(mb3Sound); 
+        mb3Sound.innerHTML = '<label for="sound" class="form-label">Sound this animal makes</label>' +
+            '<input type="text" class="form-control" id="sound" name="sound">' +
+            '<p class="text-danger d-none"></p>';
+        container.append(mb3Sound);        
+
         const submitBtn = document.createElement('div');
         submitBtn.innerHTML = '<button type="submit" class="btn btn-primary">' +
             'Save Animal <i class="fa-solid fa-check"></i>' +
             '</button>';
-        container.append(submitBtn); 
+        container.append(submitBtn);        
         ///
         form.append(container);
         return form;
@@ -56,8 +61,10 @@ function animal() {
     function validate() {
         let valid = true;
         // validate form
+        // test that name is valid
         const name = form.name.value;
         const eleNameError = form.name.nextElementSibling
+
         if (name == "") {
             eleNameError.classList.remove('d-none');
             eleNameError.textContent = "You must name this animal!";
@@ -130,12 +137,10 @@ function animal() {
         } else {
             console.log('were not good');
         }
-        // do stuff if the form is valid
-
     }
     
-     // assign a handler to the submit event
-     form.addEventListener('submit', function (event) {
+    // assign a handler to the submit event
+    form.addEventListener('submit', function (event) {
         // prevent the default action from happening
         event.preventDefault();
         submit();
