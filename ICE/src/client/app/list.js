@@ -8,10 +8,18 @@ Description: This is my js list code.
 
 console.log('we are on the list page');
 
+const params = new URL(document.location).searchParams;
+
 const eleEmpty = document.getElementById('empty-message');
 const eleTable = document.getElementById('animal-list');
 
-const records = animalService.getAnimals();
+//const records = animalService.getAnimals();
+
+let recordPage = {
+    page: Number(URLSearchParams.get('Page') ?? 1),
+    perPage: Number(URLSearchParams.get('perPage') ?? 7)
+}
+const {records, pagination} = animalService.getAnimals(recordPage);
 
 if (!records.length) 
 {
