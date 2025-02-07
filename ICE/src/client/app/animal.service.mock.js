@@ -79,7 +79,7 @@ AnimalService.prototype.findAnimal = function (animalName) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
-            if (animalName == 'name 0') {
+            if (animalName == '') {
                 reject('No service');
             }
             else {
@@ -100,7 +100,7 @@ AnimalService.prototype.updateAnimal = function (animal) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
-            if (animal.name == 'name 0') {
+            if (animal.name == '') {
                 reject('No service');
             }
             else {
@@ -112,6 +112,7 @@ AnimalService.prototype.updateAnimal = function (animal) {
                 animals[idx] = animal;
                 localStorage.setItem('animals', JSON.stringify(animals));
                 resolve(true);
+
             }
         }, 250);
     });
