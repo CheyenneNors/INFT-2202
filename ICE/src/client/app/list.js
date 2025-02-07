@@ -37,7 +37,7 @@ let recordPage = {
     perPage: Number(params.get('perPage') ?? 7)
 }
 //try {
-    const {records, pagination} = await animalService.getAnimalPage(recordPage);
+    const {records, pagination} = animalService.getAnimalPage(recordPage);
     //eleWaiting.classList.add('d-none');
 
     if (!records.length) {
