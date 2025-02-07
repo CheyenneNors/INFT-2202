@@ -30,7 +30,7 @@ if(recCount !== null){
 /* do table stuff */
 const eleEmpty = document.getElementById('empty-message');
 const eleTable = document.getElementById('animal-list');
-const eleWaiting = document.getElementById('waiting');
+//const eleWaiting = document.getElementById('waiting');
 
 let recordPage = {
     page: Number(params.get('page') ?? 1),
@@ -38,7 +38,7 @@ let recordPage = {
 }
 try {
     const {records, pagination} = await animalService.getAnimalPage(recordPage);
-    eleWaiting.classList.add('d-none');
+    //eleWaiting.classList.add('d-none');
 
     if (!records.length) {
         eleEmpty.classList.remove('d-none');
@@ -51,7 +51,7 @@ try {
     }    
 }
 catch(ex) {
-    eleWaiting.classList.add('d-none');
+    //eleWaiting.classList.add('d-none');
     const errorMessage = document.querySelector('#error-message');
     errorMessage.innerHTML = ex;
     errorMessage.classList.remove('d-none');
