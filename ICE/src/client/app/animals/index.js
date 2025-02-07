@@ -5,7 +5,7 @@ Course: INFT 2202
 Date: January 10, 2025
 Description: This is my html animal page.
 */
-import animalService from "./animal.service.mock.js";
+import animalService from "../animal.service.mock.js";
 
 function animal(name) {
     const form = document.createElement('form');
