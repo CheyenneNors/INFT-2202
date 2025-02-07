@@ -36,7 +36,7 @@ let recordPage = {
     page: Number(params.get('page') ?? 1),
     perPage: Number(params.get('perPage') ?? 7)
 }
-try {
+//try {
     const {records, pagination} = await animalService.getAnimalPage(recordPage);
     //eleWaiting.classList.add('d-none');
 
@@ -49,13 +49,13 @@ try {
         drawAnimalTable(records);
         drawPagination(pagination);
     }    
-}
-catch(ex) {
+//}
+/*catch(ex) {
     //eleWaiting.classList.add('d-none');
     const errorMessage = document.querySelector('#error-message');
     errorMessage.innerHTML = ex;
     errorMessage.classList.remove('d-none');
-}
+} */ 
 /* 
  * 
  */
