@@ -16,7 +16,7 @@ function animal(name) {
         container.classList.add('mb-2');
         //create animal form content
         const mb3Name = document.createElement('div');
-        const mb3Name = document.createElement('div');
+        //mb3Name = document.createElement('div');
         mb3Name.classList.add('mb-3');
         let editableInput = `<input type="text" class="form-control" id="name" name="name">`;
         let readonlyInput = `<input type="text" class="form-control" id="name" name="name" value="${animal!=null?animal.name:""}" readonly>`;
