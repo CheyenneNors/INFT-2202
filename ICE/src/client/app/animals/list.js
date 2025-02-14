@@ -24,7 +24,7 @@ function list (recordPage)
 
     function drawPagination({page = 1, perPage = 5, pages = 10}) 
     {
-        function addPage (nummber, text, style) 
+        function addPage (number, text, style) 
         {
             return `<li class="page-item ${style}">
                 <a class="page-link" href="./list.html?page=${number}&perPage=${perPage}">${text}</a>
