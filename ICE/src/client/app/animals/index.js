@@ -37,14 +37,14 @@ async function animal(name) {
         const mb3Leg = document.createElement('div');
         mb3Leg.classList.add('mb-3');
         mb3Leg.innerHTML = '<label for="legs" class="form-label">Number of Legs</label>' +
-            `<input type="text" class="form-control" id="legs" name="legs" value="${animal!=null?animal.legs:""}"readonly>` +
+            `<input type="text" class="form-control" id="legs" name="legs" value="${animal!=null?animal.legs:""}">` +
             '<p class="text-danger d-none"></p>';
         container.append(mb3Leg);
         
         const mb3Eye = document.createElement('div');
         mb3Eye.classList.add('mb-3');
         mb3Eye.innerHTML = '<label for="eyes" class="form-label">Number of Eyes</label>' +
-            `<input type="text" class="form-control" id="eyes" name="eyes" value="${animal!=null?animal.eyes:""}" readonly>` +
+            `<input type="text" class="form-control" id="eyes" name="eyes" value="${animal!=null?animal.eyes:""}">` +
             '<p class="text-danger d-none"></p>';
         container.append(mb3Eye);
         
