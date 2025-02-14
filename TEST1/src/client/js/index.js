@@ -7,7 +7,7 @@ Description: This is my index javascript page to display a list of movies.
 */
 
 // import the movies array from the supplied data file.
-import { movies } from "../data/movies"; 
+import { movies } from "../data/movies.js"; 
 // write the array to the console, so you can see that they are loading properly
 console.log('we are on the movie page');
 console.log(movies);
