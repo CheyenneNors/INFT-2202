@@ -100,7 +100,7 @@ AnimalService.prototype.updateAnimal = function (animal) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
-            if (animal.name == 'name 0') {
+            if (animal.name == '') {
                 reject('No service');
             }
             else {
