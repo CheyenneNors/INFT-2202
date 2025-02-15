@@ -8,7 +8,7 @@ Description: This is my general js create page.
 /*
  *  Service constructor
  */
-function productService() {
+function ProductService() {
 
     // if there is no entry for animals in local storage
     if (!localStorage.getItem('products')) {
@@ -20,11 +20,11 @@ function productService() {
 /*
  *
  */
-productService.prototype.getProducts = function () {
+ProductService.prototype.getProducts = function () {
     // this will always be set, because we did it in the constructor
     return JSON.parse(localStorage.getItem('products'));
 }
-productService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) {
+ProductService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) {
     return new Promise((resolve, reject) => {
         setTimeout(function () {
             // this will always be set, because we did it in the constructor
@@ -50,7 +50,7 @@ productService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) 
 /*
  *
  */
-productService.prototype.saveProduct = function (product) {
+ProductService.prototype.saveProduct = function (product) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(function () {
@@ -75,7 +75,7 @@ productService.prototype.saveProduct = function (product) {
 /*
  *
  */
-productService.prototype.findProducts = function (productName) {
+ProductService.prototype.findProducts = function (productName) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
@@ -96,7 +96,7 @@ productService.prototype.findProducts = function (productName) {
 /*
  *
  */
-productService.prototype.updateProduct = function (product) {
+ProductService.prototype.updateProduct = function (product) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
@@ -120,7 +120,7 @@ productService.prototype.updateProduct = function (product) {
 /*
  *
  */
-productService.prototype.deleteProduct = function (name) {
+ProductService.prototype.deleteProduct = function (name) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(function () {
@@ -141,4 +141,4 @@ productService.prototype.deleteProduct = function (name) {
     });
 }
 
-export default new productService();
+export default new ProductService();
