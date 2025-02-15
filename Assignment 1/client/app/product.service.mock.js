@@ -8,7 +8,7 @@ Description: This is my general js create page.
 /*
  *  Service constructor
  */
-function ProductService() {
+function productService() {
 
     // if there is no entry for animals in local storage
     if (!localStorage.getItem('products')) {
@@ -141,4 +141,4 @@ ProductService.prototype.deleteProduct = function (name) {
     });
 }
 
-export default new ProductService();
+export default new productService();
