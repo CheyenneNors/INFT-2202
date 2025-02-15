@@ -20,11 +20,11 @@ function productService() {
 /*
  *
  */
-ProductService.prototype.getProducts = function () {
+productService.prototype.getProducts = function () {
     // this will always be set, because we did it in the constructor
     return JSON.parse(localStorage.getItem('products'));
 }
-ProductService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) {
+productService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) {
     return new Promise((resolve, reject) => {
         setTimeout(function () {
             // this will always be set, because we did it in the constructor
@@ -50,7 +50,7 @@ ProductService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) 
 /*
  *
  */
-ProductService.prototype.saveProduct = function (product) {
+productService.prototype.saveProduct = function (product) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(function () {
@@ -75,7 +75,7 @@ ProductService.prototype.saveProduct = function (product) {
 /*
  *
  */
-ProductService.prototype.findProducts = function (productName) {
+productService.prototype.findProducts = function (productName) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
@@ -96,7 +96,7 @@ ProductService.prototype.findProducts = function (productName) {
 /*
  *
  */
-ProductService.prototype.updateProduct = function (product) {
+productService.prototype.updateProduct = function (product) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
@@ -120,7 +120,7 @@ ProductService.prototype.updateProduct = function (product) {
 /*
  *
  */
-ProductService.prototype.deleteProduct = function (name) {
+productService.prototype.deleteProduct = function (name) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(function () {
