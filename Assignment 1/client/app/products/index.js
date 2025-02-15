@@ -5,7 +5,7 @@ Course: INFT 2202
 Date: January 10, 2025
 Description: This is my html product page.
 */
-import productService from "../product.service.mock.js";
+import productService from "./product.service.mock.js";
 
 async function product(name) {
     const form = document.createElement('form');
