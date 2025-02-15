@@ -8,27 +8,27 @@ Description: This is my general js create page.
 /*
  *  Service constructor
  */
-function AnimalService() {
+function ProductService() {
 
     // if there is no entry for animals in local storage
-    if (!localStorage.getItem('animals')) {
+    if (!localStorage.getItem('products')) {
         // https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage  
         // create a new entry in local storage and put an empty array in it        
-        localStorage.setItem('animals', JSON.stringify([]))
+        localStorage.setItem('products', JSON.stringify([]))
     }
 }
 /*
  *
  */
-AnimalService.prototype.getAnimals = function () {
+ProductService.prototype.getProducts = function () {
     // this will always be set, because we did it in the constructor
-    return JSON.parse(localStorage.getItem('animals'));
+    return JSON.parse(localStorage.getItem('products'));
 }
-AnimalService.prototype.getAnimalPage = function ({ page = 1, perPage = 15 }) {
+ProductService.prototype.getProductPage = function ({ page = 1, perPage = 15 }) {
     return new Promise((resolve, reject) => {
         setTimeout(function () {
             // this will always be set, because we did it in the constructor
-            let records = JSON.parse(localStorage.getItem('animals'));
+            let records = JSON.parse(localStorage.getItem('products'));
             let pagination = {
                 page: page,
                 perPage: perPage,
@@ -50,22 +50,22 @@ AnimalService.prototype.getAnimalPage = function ({ page = 1, perPage = 15 }) {
 /*
  *
  */
-AnimalService.prototype.saveAnimal = function (animals) {
+ProductService.prototype.saveProduct = function (product) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(function () {
-            animals.forEach(animal => {
+            products.forEach(product => {
                 // get a list of animals
-                const _animals = self.getAnimals();
+                const _products = self.getProducts();
                 // see if this animal already exists
-                if (_animals.find(a => a.name == animal.name)) {
+                if (_products.find(a => a.name == product.name)) {
                     // tell the caller we're not going to save this
-                    reject('An animal with that name already exists!');
+                    reject('An product with that name already exists!');
                 }
                 // if it doesn't, add it to the array
-                _animals.push(animal);
+                _products.push(product);
                 // and save it in storage again
-                localStorage.setItem('animals', JSON.stringify(_animals));
+                localStorage.setItem('products', JSON.stringify(_products));
             });
             // tell the caller all was well
             resolve(true);
@@ -75,20 +75,20 @@ AnimalService.prototype.saveAnimal = function (animals) {
 /*
  *
  */
-AnimalService.prototype.findAnimal = function (animalName) {
+ProductService.prototype.findProducts = function (productName) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
-            if (animalName == '') {
+            if (productName == '') {
                 reject('No service');
             }
             else {
-                const animals = self.getAnimals();
-                const animal = animals.find(a => a.name == animalName);
-                if (!animal) {
+                const products = self.getProducts();
+                const product = products.find(a => a.name == productName);
+                if (!product) {
                     resolve([]);
                 }
-                resolve([animal]);
+                resolve([product]);
             }
         }, 250);
     });
@@ -96,21 +96,21 @@ AnimalService.prototype.findAnimal = function (animalName) {
 /*
  *
  */
-AnimalService.prototype.updateAnimal = function (animal) {
+ProductService.prototype.updateProduct = function (product) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(() => {
-            if (animal.name == '') {
+            if (product.name == '') {
                 reject('No service');
             }
             else {
-                const animals = self.getAnimals();
-                const idx = animals.findIndex(a => a.name == animal.name);
+                const products = self.getProducts();
+                const idx = products.findIndex(a => a.name == product.name);
                 if (idx === -1) {
                     resolve(false);
                 }
-                animals[idx] = animal;
-                localStorage.setItem('animals', JSON.stringify(animals));
+                products[idx] = product;
+                localStorage.setItem('product', JSON.stringify(products));
                 resolve(true);
 
             }
@@ -120,7 +120,7 @@ AnimalService.prototype.updateAnimal = function (animal) {
 /*
  *
  */
-AnimalService.prototype.deleteAnimal = function (name) {
+ProductService.prototype.deleteProduct = function (name) {
     return new Promise((resolve, reject) => {
         const self = this;
         setTimeout(function () {
@@ -128,17 +128,17 @@ AnimalService.prototype.deleteAnimal = function (name) {
                 reject('No service');
             }
             else {
-                const animals = self.getAnimals();
-                const idx = animals.findIndex(a => a.name == name);
+                const products = self.getProducts();
+                const idx = products.findIndex(a => a.name == name);
                 if (idx === -1) {
                     resolve(false);
                 }
-                animals.splice(idx, 1);
-                localStorage.setItem('animals', JSON.stringify(animals));
+                products.splice(idx, 1);
+                localStorage.setItem('products', JSON.stringify(products));
                 resolve(true);
             }
         }, 250);
     });
 }
 
-export default new AnimalService();
+export default new ProductService();

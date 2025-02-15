@@ -6,7 +6,7 @@ Date: January 17, 2025
 Description: This is my js list code.
 */
 
-import animalService from "./animal.service.mock.js";
+import productService from "./product.service.mock.js";
 
 console.log('we are on the list page');
 
@@ -14,22 +14,21 @@ const params = new URL(document.location).searchParams;
 //add records for pagination test
 let recCount = params.get("records");
 if(recCount !== null){
-    let animals = [];
+    let products = [];
     for(let index=0; index<recCount; index++){
-        animals.push({
-            "name": `name ${index}`,
-            "breed": "Grizzly Bear",
-            "legs": 4,
-            "eyes": 2,
-            "sound": "Moo"
+        products.push({
+            "name": "Cool Guy Fedora",
+            "description": "A hat to wear on your head to attract people.",
+            "stock": 35,
+            "price": 39.95,
           });
     }
-    animalService.saveAnimal(animals);
+    productService.saveProduct(products);
 }
 
 /* do table stuff */
 const eleEmpty = document.getElementById('empty-message');
-const eleTable = document.getElementById('animal-list');
+const eleTable = document.getElementById('product-list');
 const eleWaiting = document.getElementById('waiting');
 
 let recordPage = {
@@ -37,7 +36,7 @@ let recordPage = {
     perPage: Number(params.get('perPage') ?? 7)
 }
 try {
-    const {records, pagination} = await animalService.getAnimalPage(recordPage);
+    const {records, pagination} = await productService.getProductPage(recordPage);
     eleWaiting.classList.add('d-none');
 
     if (!records.length) {
@@ -46,7 +45,7 @@ try {
     } else {
         eleEmpty.classList.add('d-none');
         eleTable.classList.remove('d-none');
-        drawAnimalTable(records);
+        drawProductTable(records);
         drawPagination(pagination);
     }    
 }
@@ -84,17 +83,16 @@ function drawPagination({ page = 1, perPage = 5, pages = 10 })
 /* 
  * 
  */
-function drawAnimalTable(animals) 
+function drawProductTable(products) 
 {
-    for (let animal of animals) {
+    for (let product of products) {
         const row = eleTable.insertRow();
         // create some rows for each animal field
 
-        row.insertCell().textContent = animal.name;
-        row.insertCell().textContent = animal.breed;
-        row.insertCell().textContent = animal.legs;
-        row.insertCell().textContent = animal.eyes;
-        row.insertCell().textContent = animal.sound;
+        row.insertCell().textContent = product.name;
+        row.insertCell().textContent = product.description;
+        row.insertCell().textContent = product.stock;
+        row.insertCell().textContent = product.price;
         // create a cell to hold the buttons
         const eleBtnCell = row.insertCell();
         eleBtnCell.classList.add();
@@ -109,7 +107,7 @@ function drawAnimalTable(animals)
         const eleBtnEdit = document.createElement('a');
         eleBtnEdit.classList.add('btn', 'btn-primary', 'mx-1');
         eleBtnEdit.innerHTML = `<i class="fa fa-user"></i>`;
-        eleBtnEdit.href = `./animal.html?name=${animal.name}`
+        eleBtnEdit.href = `./product.html?name=${product.name}`
         // add the edit button to the button cell
         eleBtnCell.append(eleBtnEdit);
     }
@@ -117,6 +115,6 @@ function drawAnimalTable(animals)
 
 function onDeleteButtonClick(animal) {
     return event => {
-        animalService.deleteAnimal(animal.name).then(()=>{window.location.reload();});        
+        productService.deleteProduct(product.name).then(()=>{window.location.reload();});        
     }
 }
