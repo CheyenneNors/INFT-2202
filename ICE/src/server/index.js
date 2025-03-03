@@ -4,8 +4,9 @@ const port = 3000;
 
 app.use(express.static('public'));
 
+let helloContent = `<!DOCTYPE html><html lang=\"en-us\"><head><title>INFT 2202</title></head><body><main><h1>Hello from Express</h1><p>at ${new Date()}</p></main></body></html>`;
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send(helloContent);
 });
 
 app.listen(port, () => {
