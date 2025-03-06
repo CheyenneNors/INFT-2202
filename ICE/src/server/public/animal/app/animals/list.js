@@ -2,11 +2,11 @@
 Name: Cheyenne Norsworthy
 Filename: list.js
 Course: INFT 2202
-Date: January 17, 2025
+Date: March 3, 2025
 Description: This is my js list code.
 */
 
-import animalService from "./animal.service.mock.js";
+import animalService from "./animal.service.js";
 
 function list (recordPage) 
 {
@@ -97,22 +97,7 @@ function list (recordPage)
         }
     }
     function createContent() {
-        const params = new URLSearchParams(recordPage);
-        const url = new URL(`/api/animals?${params.toString()}`, 'https://inft2202.opentech.durhamcollege.org');
-        const req = new Request(url, {
-            headers: {
-                'apiKey': 'a42a0e4e-4445-42dc-a471-298627825bd4'
-            },
-            method: 'GET',
-        });
-    //do fetch here
-        fetch(req)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        animalService.getAnimalPage(recordPage)
         .then((ret) => {
             let { records, pagination } = ret;
             divWaiting.classList.add('d-none');
