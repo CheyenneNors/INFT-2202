@@ -1,5 +1,4 @@
 import express from "express";
-import animalData from "./data/animal.js"
 const app = express();
 const port = 3000;
 
