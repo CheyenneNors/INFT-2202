@@ -6,7 +6,7 @@ Date: March 3, 2025
 Description: This is my js list code.
 */
 
-import animalService from "./animal.service.js";
+import animalService from "../animal.service.js";
 
 function list (recordPage) 
 {
