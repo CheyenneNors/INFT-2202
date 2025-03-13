@@ -56,7 +56,7 @@ async function product(name) {
         
         const submitBtn = document.createElement('div');
         submitBtn.innerHTML = '<button type="submit" class="btn btn-primary">' +
-            'Save Animal <i class="fa-solid fa-check"></i>' +
+            'Save Product <i class="fa-solid fa-check"></i>' +
             '</button>';
         container.append(submitBtn);        
         ///
