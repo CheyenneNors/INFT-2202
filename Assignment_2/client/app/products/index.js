@@ -133,7 +133,7 @@ async function product(name) {
                 } else {
                     await productService.updateProduct(productObject)
                 } 
-                eleNameError.classList.add('');
+                eleNameError.classList.add('d-none');
                 form.reset();
                 window.location = './list.html';
             } catch (error) {
