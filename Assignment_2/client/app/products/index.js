@@ -133,12 +133,12 @@ async function product(name) {
                 } else {
                     await productService.updateProduct(productObject)
                 } 
-                eleNameError.classList.add('d-none');
+                eleNameError.classList.add('');
                 form.reset();
                 window.location = './list.html';
             } catch (error) {
                 console.log(error);
-                eleNameError.classList.remove('d-none');
+                eleNameError.classList.remove('S');
                 eleNameError.textContent = "This product already exists!";
             }
             // do nothing if it's not
