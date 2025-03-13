@@ -65,7 +65,7 @@ function list (recordPage)
         });
         for (let product of products) {
             const row = eleTable.insertRow();
-            // create some rows for each animal field    
+            // create some rows for each product field    
             row.insertCell().textContent = product.name;
             row.insertCell().textContent = product.description;
             row.insertCell().textContent = product.stock;
@@ -77,7 +77,7 @@ function list (recordPage)
             const eleBtnDelete = document.createElement('button');
             eleBtnDelete.classList.add('btn', 'btn-danger', 'mx-1');
             eleBtnDelete.innerHTML = `<i class="fa fa-trash"></i>`;
-            eleBtnDelete.addEventListener('click', onDeleteButtonClick(animal));
+            eleBtnDelete.addEventListener('click', onDeleteButtonClick(product));
             // add the delete button to the button cell
             eleBtnCell.append(eleBtnDelete);
             // create an edit button

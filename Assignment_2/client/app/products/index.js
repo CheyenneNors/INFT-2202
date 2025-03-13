@@ -3,7 +3,7 @@ Name: Cheyenne Norsworthy
 Filename: index.js
 Course: INFT 2202
 Date: March 3, 2025
-Description: This is my html animal page.
+Description: This is my html product page.
 */
 import productService from "../product.service.js";
 
