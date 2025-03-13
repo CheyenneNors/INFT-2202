@@ -1,18 +1,18 @@
 /*
 Name: Cheyenne Norsworthy
-Filename: animal.service.js
+Filename: product.service.js
 Course: INFT 2202
 Date: March 3, 2025
 Description: This is my general js create page.
 */
 
-export default new AnimalService({
-    host: 'https://inft2202-server.onrender.com/',
+export default new ProductService({
+    host: 'https://inft2202-server.onrender.com/api/products',
     //host: 'https://localhost:3091',
     user: '100806066'
 });
 
-function AnimalService({host, user}) {
+function ProductService({host, user}) {
     this.host = host;
     this.headers = new Headers({
         'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ function AnimalService({host, user}) {
     });
 }
 
-AnimalService.prototype.findAnimal = async function(name) {
-    const url = new URL(`/api/animals/${name}`, this.host);
+ProductService.prototype.findProduct = async function(name) {
+    const url = new URL(`/api/products/${name}`, this.host);
     const req = new Request(url, {
         headers: this.headers,
         method: 'GET',
@@ -34,10 +34,10 @@ AnimalService.prototype.findAnimal = async function(name) {
     }
 }
 
-AnimalService.prototype.getAnimalPage = async function ({ page = 1, perPage = 8}) 
+ProductService.prototype.getProductPage = async function ({ page = 1, perPage = 8}) 
 {
     const params = new URLSearchParams({page, perPage});
-    const url = new URL(`/api/animals?${params.toString()}`, this.host);
+    const url = new URL(`/api/products?${params.toString()}`, this.host);
     const req = new Request(url, 
         {
             headers: this.headers,
@@ -53,14 +53,14 @@ AnimalService.prototype.getAnimalPage = async function ({ page = 1, perPage = 8}
         }
 }
 
-AnimalService.prototype.saveAnimal = async function(animals)
+ProductService.prototype.saveProduct = async function(products)
 {
-    const url = new URL(`/api/animals`, this.host);
+    const url = new URL(`/api/products`, this.host);
     const req = new Request(url, 
         {
             headers: this.headers,
             method: 'POST',
-            body: JSON.stringify(animals)
+            body: JSON.stringify(products)
         });
         try
         {
@@ -73,14 +73,14 @@ AnimalService.prototype.saveAnimal = async function(animals)
 }
 
 
-AnimalService.prototype.updateAnimal = async function(animal)
+ProductService.prototype.updateProduct = async function(product)
 {
-    const url = new URL(`/api/animals`, this.host);
+    const url = new URL(`/api/products`, this.host);
     const req = new Request(url, 
         {
             headers: this.headers,
             method: 'PUT',
-            body: JSON.stringify(animal)
+            body: JSON.stringify(product)
         });
         try {
             const res = await fetch(req);
@@ -91,9 +91,9 @@ AnimalService.prototype.updateAnimal = async function(animal)
         }
 }
 
-AnimalService.prototype.deleteAnimal = async function (name)
+ProductService.prototype.deleteProduct = async function (name)
 {
-    const url = new URL(`/api/animals/${name}`, this.host);
+    const url = new URL(`/api/products/${name}`, this.host);
     const req = new Request(url, 
         {
             headers: this.headers,
