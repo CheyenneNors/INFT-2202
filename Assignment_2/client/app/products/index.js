@@ -21,7 +21,7 @@ async function product(name) {
         const mb3Name = document.createElement('div');
         mb3Name.classList.add('mb-3');
         let editableInput = `<input type="text" class="form-control" id="name" name="name">`;
-        let readonlyInput = `<input type="text" class="form-control" id="name" name="name" value="${product!=null?product.name:""}" readonly>`;
+        let readonlyInput = `<input type="text" class="form-control" id="name" name="name" value="${product!=null?product.name:""}">`;
         mb3Name.innerHTML = '<label for="name" class="form-label">Product Name</label>' +
             (product!=null ? readonlyInput : editableInput) +
             '<p class="text-danger d-none"></p>';
@@ -30,7 +30,7 @@ async function product(name) {
         const mb3Description = document.createElement('div');
         mb3Description.classList.add('mb-3');
         editableInput = `<input type="text" class="form-control" id="description" name="description" `;
-        readonlyInput = `<input type="text" class="form-control" id="description" name="description" value="${product!=null?product.description:""}" readonly>`;
+        readonlyInput = `<input type="text" class="form-control" id="description" name="description" value="${product!=null?product.description:""}">`;
         mb3Description.innerHTML = '<label for="description" class="form-label">Product Description</label>' +
             (product!=null ? readonlyInput : editableInput) +
             '<p class="text-danger d-none"></p>';
