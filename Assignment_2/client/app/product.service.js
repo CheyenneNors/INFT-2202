@@ -8,7 +8,6 @@ Description: This is my general js create page.
 
 export default new ProductService({
     host: 'https://inft2202-server.onrender.com/api/products',
-    //host: 'https://localhost:3091',
     user: '100806066'
 });
 
