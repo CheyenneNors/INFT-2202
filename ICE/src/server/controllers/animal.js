@@ -6,8 +6,8 @@ Date: March 10, 2025
 Description: This is my general js create page.
 */
 
-import dataService from '../service/dataService.mock.js';
-//import dataService from '../service/dataService.js';
+//import dataService from '../service/dataService.mock.js';
+import dataService from '../service/dataService.js';
 
 const animalService = dataService('animal');
 const animal = {
@@ -16,7 +16,7 @@ const animal = {
             let ret;
             const user = _.headers['user'];
             if(_.params.name){
-                ret = await animalService.query(name);
+                ret = await animalService.query(_.params.name);
             } else {
                 ret = await animalService.load(_.query);
             }
