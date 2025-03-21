@@ -35,6 +35,4 @@ const logRequest = async (request, response) => {
     } else {
         logger.info(`[${time}] REQUEST: ${method} ${originalUrl}`, context);
     }
-
-    app.use('/api/animals', animalRouter);
 }
