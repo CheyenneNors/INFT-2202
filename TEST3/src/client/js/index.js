@@ -1,6 +1,6 @@
 // Follow the README.md to set up the rest of this file.
 
-
+import { movies } from "../../server/data/movies";
 
 /*
  *  fetchMovies
