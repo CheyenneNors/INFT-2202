@@ -117,15 +117,19 @@ function insertMoviesIntoTable(eleTable, movies)
             // refresh the page
 
         pinButton.addEventListener("click", () => {
+            let pinnedMovies = getPinnedMoviesFromStorage(); // Reload the latest pinnedMovies here
             let updatedPins;
+            
             if (isPinned) {
                 updatedPins = pinnedMovies.filter(p => p.title !== movie.title);
             } else {
                 updatedPins = [...pinnedMovies, movie];
             }
-             localStorage.setItem("pinnedMovies", JSON.stringify(updatedPins));
-             location.reload();
+            
+            localStorage.setItem("pinnedMovies", JSON.stringify(updatedPins));
+            location.reload(); // Refreshes the page to reflect changes
         });
+            
 
         // create another table row and put the button in it
         // if a movie is rated two or below, make this row red
@@ -133,7 +137,7 @@ function insertMoviesIntoTable(eleTable, movies)
         // if this movie is rated higher than five but less than or equal to 8, make this row blue
         // if this movie is rated higher than eight, make this row green
         // if this movie is a drama, don't add it to the list
-        pin.cell.appendChild(pinButton);
+        pinCell.appendChild(pinButton);
 
         if (movie.rating <= 2) {
             row.classList.add("table-danger");
@@ -144,6 +148,10 @@ function insertMoviesIntoTable(eleTable, movies)
         } else {
             row.classList.add("table-success");
         }
+
+
+        
+        
 
     }); 
 }
