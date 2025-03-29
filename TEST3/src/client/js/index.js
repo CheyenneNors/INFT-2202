@@ -1,7 +1,4 @@
 // Follow the README.md to set up the rest of this file.
-
-import { movies } from "../../server/data/movies";
-
 /*
  *  fetchMovies
  *  This should take two parameters
@@ -11,8 +8,6 @@ import { movies } from "../../server/data/movies";
  *  It should throw an error if something went wrong
  *  You need to use the following classes: URLSearchParams, URL, Headers, and Request.
  */
-
-
 
 /*
  *  insertMoviesIntoTable
@@ -33,3 +28,96 @@ import { movies } from "../../server/data/movies";
         // if this movie is rated higher than two but less than or equal to five, make this row orange
         // if this movie is rated higher than five but less than or equal to 8, make this row blue
         // if this movie is rated higher than eight, make this row green
+
+// Fetch movies from the server
+async function fetchMovies(genre = null, rating = null) {
+    try {
+        const params = new URLSearchParams();
+        if (genre) params.append('genre', genre);
+        if (rating) params.append('rating', rating);
+
+        const url = new URL(`/api/movies?${params.toString()}`, window.location.origin);
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Something went wrong');
+        }
+
+        const movies = await response.json();
+        return movies;
+    } catch (error) {
+        displayError(error.message);
+        return [];
+    }
+}
+
+// Insert movies into the table
+function insertMoviesIntoTable(table, movies) {
+    const tbody = table.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    movies.forEach(movie => {
+        const row = tbody.insertRow();
+
+        const titleCell = row.insertCell();
+        const genreCell = row.insertCell();
+        const ratingCell = row.insertCell();
+        const dateCell = row.insertCell();
+
+        titleCell.textContent = movie.title;
+        genreCell.textContent = movie.genre;
+        ratingCell.textContent = movie.rating;
+        
+        const date = new Date(movie.datetime * 1000);
+        dateCell.textContent = date.toLocaleString();
+
+        if (movie.rating <= 2) row.style.backgroundColor = 'red';
+        else if (movie.rating <= 5) row.style.backgroundColor = 'orange';
+        else if (movie.rating <= 8) row.style.backgroundColor = 'blue';
+        else row.style.backgroundColor = 'green';
+    });
+
+    table.style.display = movies.length > 0 ? 'table' : 'none';
+}
+
+// Display error message
+function displayError(message) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+}
+
+// Update footer with your name and current year
+function updateFooter() {
+    const footer = document.querySelector('footer');
+    const currentYear = new Date().getFullYear();
+    footer.textContent = `Created by Cheyenne Norsworthy, ${currentYear}`;
+}
+
+updateFooter();
+
+// Event listeners for dropdowns
+const genreDropdown = document.getElementById('genre');
+const ratingDropdown = document.getElementById('rating');
+const movieTable = document.getElementById('movie-table');
+
+async function handleFilterChange() {
+    const genre = genreDropdown.value || null;
+    const rating = ratingDropdown.value || null;
+    const movies = await fetchMovies(genre, rating);
+
+    if (movies.length > 0) {
+        insertMoviesIntoTable(movieTable, movies);
+    } else {
+        displayError('No movies match your selected filters.');
+    }
+}
+
+genreDropdown.addEventListener('change', handleFilterChange);
+ratingDropdown.addEventListener('change', handleFilterChange);
