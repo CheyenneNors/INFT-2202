@@ -96,7 +96,7 @@ function displayError(message) {
     footer.textContent = `Created by Cheyenne Norsworthy, ${currentYear}`;
 } */
 
-updateFooter();
+//updateFooter();
 
 const genreDropdown = document.getElementById('genre');
 const ratingDropDown = document.getElementById('rating');
