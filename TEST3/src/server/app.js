@@ -9,28 +9,28 @@
 // configure the server to use your new router instance
 // start the server
 
-const express = require('express');
+const express = require ('express');
 const app = express();
-const cors = require('cors');
-const { movies } = require('./data/movies');
+const cors = require ('cors');
+const {movies} = require ('./data/movies');
+
 
 app.use(cors());
 app.use(express.json());
 
-// GET /api/movies
 app.get('/api/movies', (req, res) => {
     try {
         let filteredMovies = [...movies];
-        const { rating, genre } = req.query;
+        const {rating, genre} = req.query;
 
         if (rating) {
             const ratingNum = parseFloat(rating);
 
-            if (isNaN(ratingNum) || ratingNum < 1 || ratingNum > 10) {
-                return res.status(400).json({ message: 'Rating must be a number between 1 and 10.' });
+            if (isNaN (ratingNum) || ratingNum < 1 || ratingNum > 10) {
+                return res.status(400).json({ message: 'Rating must be a number between 1 and 10.'});
             }
 
-            filteredMovies = filteredMovies.filter(movie => movie.rating >= ratingNum);
+            filteredMovies = filteredMovies.filter (movie => movie.rating >= ratingNum);
         }
 
         if (genre) {
@@ -39,14 +39,14 @@ app.get('/api/movies', (req, res) => {
             );
 
             if (filteredMovies.length === 0) {
-                return res.status(404).json({ message: 'No movies found for the specified genre.' });
+                return res.status(404).json({ message: 'No movies found for the specified genre.'});
             }
         }
 
         filteredMovies.sort((a, b) => b.rating - a.rating);
         res.json(filteredMovies);
     } catch (error) {
-        res.status(500).json({ message: 'An error occurred while processing your request.' });
+        res.status(500).json ({ message: 'An error occurred while processing your request.'});
     }
 });
 
