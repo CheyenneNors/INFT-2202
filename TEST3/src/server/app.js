@@ -8,10 +8,9 @@
 // create a new route and route handler, check the README for more details.
 // configure the server to use your new router instance
 // start the server
-
-const express = require ('express');
+import express from ('express');
 const app = express();
-const cors = require ('cors');
+import cors from ('cors');
 const {movies} = require ('./data/movies');
 
 
