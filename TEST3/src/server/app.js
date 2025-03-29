@@ -12,10 +12,12 @@ import express from 'express';
 import cors from 'cors';
 import { movies } from './data/movies.js';  // Make sure to use named import
 const app = express();
-const port = 3002;
+const port = 3004;
 
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static('public'));  // Serve static files
 
 app.get('/api/movies', (req, res) => {
     try {

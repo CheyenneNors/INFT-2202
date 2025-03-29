@@ -31,18 +31,20 @@
                     <div class="d-flex justify-content-between mb-2">
                         <div>
                             <select class="form-select" id="genre-selector" name="genre">
-                                <option value="" default>All Genres</option>
-                                <option value="Action">Action</option>
-                                <option value="Comedy">Comedy</option>
-                                <option value="Drama">Drama</option>
-                                <option value="Horror">Horror</option>
-                                <option value="Other">Other</option>
-                                <option value="Sci-Fi">Sci-Fi</option>
-                            </select>
+                                <select class="form-select" id="genre-selector" name="genre">
+                                    <option value="" default>All Genres</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Other">Other</option>
+                                    <option value="Sci-Fi">Sci-Fi</option>
+                                </select>
+                                
                         </div>
                         <div>
                             <select class="form-select" id="rating-selector" name="rating">
-                                <option value="" default>All Ratings</option>
+                                <option value="" selected>All Ratings</option>
                                 <option value="9">9+</option>
                                 <option value="8">8+</option>
                                 <option value="7">7+</option>
@@ -55,16 +57,18 @@
                             </select>
                         </div>
                     </div>
-                    <div class="alert alert-warning">
-                        There are no movies in the databse that match your filters.
+                    <div id="alert-message" class="alert alert-warning d-none">
+                        There are no movies in the database that match your filters.
                     </div>
-                    <table class="table d-none">
+                    <table id="movie-table" class="table d-none">
                         <thead>
-                            <th>Movie Name</th>
-                            <th>Genre</th>
-                            <th>Release Date</th>
-                            <th>Director</th>
-                            <th>Rating</th>
+                            <tr>
+                                <th>Movie Name</th>
+                                <th>Genre</th>
+                                <th>Release Date</th>
+                                <th>Director</th>
+                                <th>Rating</th>
+                            </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
