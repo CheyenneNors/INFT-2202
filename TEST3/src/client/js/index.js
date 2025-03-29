@@ -103,8 +103,8 @@ const ratingDropDown = document.getElementById('rating');
 const movieTable = document.getElementById('movie-table');
 
 async function handleFilterChange() {
-    const genre = genreDropdown.value || null;
-    const rating = ratingDropDown.value || null;
+    const genre = genreDropdown.value;
+    const rating = ratingDropDown.value;
     const movies = await fetchMovies(genre, rating);
 
     if (movies.length > 0 ) {
