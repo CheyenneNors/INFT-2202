@@ -63,10 +63,11 @@ function insertMoviesIntoTable (table, movies) {
         
         const row = tbody.insertRow();
 
-        const titleCell = row.insertRow();
-        const genreCell = row.insertRow();
-        const ratingcell = row.insertRow();
-        const dateCell = row.insertRow();
+        const titleCell = row.insertCell();
+        const genreCell = row.insertCell();
+        const ratingCell = row.insertCell();
+        const dateCell = row.insertCell();
+
         
         titleCell.textContent = movie.title;
         genreCell.textContent = movie.genre;
@@ -74,7 +75,7 @@ function insertMoviesIntoTable (table, movies) {
         const date = new Date(movie.datetime *1000);
         dateCell.textContent = date.toLocaleString();
 
-        if (movie.rating <= 2) row.style.backgroundColour = 'red';
+        if (movie.rating <= 2) row.style.backgroundColor = 'red';
         else if (movie.rating <= 5) row.style.backgroundColour = 'orange';
         else if (movie.rating <= 8) row.style.backgroundColour = 'blue';
         else row.style.backgroundColour = 'green';
