@@ -90,11 +90,11 @@ function displayError(message) {
     errorMessage.style.display = 'block';
 }
 
-function updateFooter() {
+/* function updateFooter() {
     const footer = document.querySelector('footer');
     const currentYear = new Date().getFullYear();
     footer.textContent = `Created by Cheyenne Norsworthy, ${currentYear}`;
-}
+} */
 
 updateFooter();
 
