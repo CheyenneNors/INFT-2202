@@ -40,7 +40,6 @@ function app(container) {
             navItems[3].classList.add('active');
             navItems[3].setAttribute('aria-current','page');            
             container.innerHTML = contactBuilder();
-            container.append(contactBuilder(app).element);
         },
         aboutBuilder: function(app) {
             app.name = null;
@@ -51,7 +50,6 @@ function app(container) {
             navItems[4].classList.add('active');
             navItems[4].setAttribute('aria-current','page');            
             container.innerHTML = aboutBuilder();
-            container.append(aboutBuilder(app).element);
         },
         coverBuilder: function(app){
             app.name = null;
