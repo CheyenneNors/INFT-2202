@@ -1,6 +1,8 @@
 import listBuilder from "./animals/list.js";
 import animalBuilder from "./animals/index.js";
-import coverBuilder from "./views/cover.ejs"
+import coverBuilder from "./views/cover.ejs";
+import contactBuilder from "./views/contact.ejs";
+import aboutBuilder from "./views/about.ejs";
 import twitter from '../asset/twitter.svg';
 
 function app(container) {
@@ -29,6 +31,28 @@ function app(container) {
             container.innerHTML = '';
             container.append(listBuilder(app).element);
         },
+        contactBuilder: function(app) {
+            app.name = null;
+            navItems.forEach(item=>{
+                item.classList.remove('active');
+                item.removeAttribute('aria-current');
+            });
+            navItems[3].classList.add('active');
+            navItems[3].setAttribute('aria-current','page');            
+            container.innerHTML = '';
+            container.append(contactBuilder(app).element);
+        },
+        aboutBuilder: function(app) {
+            app.name = null;
+            navItems.forEach(item=>{
+                item.classList.remove('active');
+                item.removeAttribute('aria-current');
+            });
+            navItems[4].classList.add('active');
+            navItems[4].setAttribute('aria-current','page');            
+            container.innerHTML = '';
+            container.append(aboutBuilder(app).element);
+        },
         coverBuilder: function(app){
             app.name = null;
             navItems.forEach(item=>{
@@ -41,28 +65,6 @@ function app(container) {
                 './img/everything_is_object2.png',
                 './img/everything_is_object3.png'
             ]});
-        },
-        contactBuilder: function(app) {
-            app.name = null;
-            navItems.forEach(item=>{
-                item.classList.remove('active');
-                item.removeAttribute('aria-current');
-            });
-            navItems[3].classList.add('active');
-            navItems[3].setAttribute('aria-current','page');            
-            container.innerHTML = '';
-            container.append(listBuilder(app).element);
-        },
-        aboutBuilder: function(app) {
-            app.name = null;
-            navItems.forEach(item=>{
-                item.classList.remove('active');
-                item.removeAttribute('aria-current');
-            });
-            navItems[4].classList.add('active');
-            navItems[4].setAttribute('aria-current','page');            
-            container.innerHTML = '';
-            container.append(listBuilder(app).element);
         },
     };
     const navigateTo = url => {
@@ -118,4 +120,4 @@ function app(container) {
     footImgs.appendChild(svgElement);    
 }
 
-export default app;
+export default app; 
