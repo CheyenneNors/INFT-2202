@@ -41,7 +41,29 @@ function app(container) {
                 './img/everything_is_object2.png',
                 './img/everything_is_object3.png'
             ]});
-        }
+        },
+        contactBuilder: function(app) {
+            app.name = null;
+            navItems.forEach(item=>{
+                item.classList.remove('active');
+                item.removeAttribute('aria-current');
+            });
+            navItems[3].classList.add('active');
+            navItems[3].setAttribute('aria-current','page');            
+            container.innerHTML = '';
+            container.append(listBuilder(app).element);
+        },
+        aboutBuilder: function(app) {
+            app.name = null;
+            navItems.forEach(item=>{
+                item.classList.remove('active');
+                item.removeAttribute('aria-current');
+            });
+            navItems[4].classList.add('active');
+            navItems[4].setAttribute('aria-current','page');            
+            container.innerHTML = '';
+            container.append(listBuilder(app).element);
+        },
     };
     const navigateTo = url => {
         history.pushState(null, null, url);
@@ -52,7 +74,9 @@ function app(container) {
         const routes = [
             { path: "/", view: () => appObj.coverBuilder(appObj) },
             { path: "/animal", view: () => appObj.animalBuilder(appObj) },
-            { path: "/list", view: () => appObj.listBuilder(appObj) }
+            { path: "/list", view: () => appObj.listBuilder(appObj) },
+            { path: "/contact", view: () => appObj.contactBuilder(appObj) },
+            { path: "/about", view: () => appObj.aboutBuilder(appObj) }
         ];
 
         const potentialMatches = routes.map(route => {
