@@ -39,7 +39,7 @@ function app(container) {
             });
             navItems[3].classList.add('active');
             navItems[3].setAttribute('aria-current','page');            
-            container.innerHTML = '';
+            container.innerHTML = aboutBuilder();
             container.append(contactBuilder(app).element);
         },
         aboutBuilder: function(app) {
@@ -50,7 +50,7 @@ function app(container) {
             });
             navItems[4].classList.add('active');
             navItems[4].setAttribute('aria-current','page');            
-            container.innerHTML = '';
+            container.innerHTML = aboutBuilder();
             container.append(aboutBuilder(app).element);
         },
         coverBuilder: function(app){
