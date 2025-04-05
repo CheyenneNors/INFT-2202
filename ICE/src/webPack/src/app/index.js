@@ -39,7 +39,7 @@ function app(container) {
             });
             navItems[3].classList.add('active');
             navItems[3].setAttribute('aria-current','page');            
-            container.innerHTML = aboutBuilder();
+            container.innerHTML = contactBuilder();
             container.append(contactBuilder(app).element);
         },
         aboutBuilder: function(app) {
