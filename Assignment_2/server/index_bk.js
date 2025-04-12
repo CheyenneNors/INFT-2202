@@ -1,5 +1,5 @@
 import express from "express";
-import animalData from "./data/animal.js"
+import productData from "./data/product.js"
 const app = express();
 const port = 3000;
 
@@ -9,8 +9,8 @@ app.get("/hello", (req, res) => {
   res.send("<!DOCTYPE html><html lang=\"en-us\"><head><title>INFT 2202</title></head><body><main><h1>Hello from Express</h1></main></body></html>");
 });
 
-app.get("/api/animals", (req, res) => {
-  res.json(animalData);
+app.get("/api/products", (req, res) => {
+  res.json(productData);
 });
 
 app.listen(port, () => {
